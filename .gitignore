@@ -1,1 +1,8 @@
-venv/
+# Ignore AWS binaries
+hello_flask/aws/dist/
+awscliv2.zip
+
+# Python caches
+__pycache__/
+*.pyc
+
