@@ -68,3 +68,57 @@ The first stage handles building the application, while the second stage creates
         - Push the image:  
         `docker push libaandocker/flask-mysql:v1`  
  <img src="images/Dockerhub.png"></img>
+ Pulling:
+        - Dockerhub is widely used because of it's accesibility. You can easily pull official, secure, up-to-date images from trusted resources, like MySQL, Mongo, Python, Node.js etc. 
+        - Pull by following command:  
+        `docker pull <image_name>`  
+
+            example from project:   
+            `docker pull mysql`
+    - Using the images to run containers:  
+    `docker run -d --name <name_container> --network <name_network> -p <port number:port number> <image_name>`  
+
+        example:  
+        `docker run -d --name my-app2 --network my-network -p 5002:5002 mysql:latest`
+- Pushing & pulling images from AWS ECR (private):
+    - Create an AWS account
+    - Navigate to the ECR (Elastic Container Registry)
+    - Create a repository
+    - Pushing:
+        - In the terminal, login to AWS and choose your local zone:  
+        `aws login`
+        - On AWS page, enter your repository and check "View push commands"
+        - Follow the steps from AWS, 1-4, copy and paste every command to push the image
+        - Refresh the page and the image should pop up
+<img src="images/ECR.png"></img>
+Pulling:
+        - Pull the stored image by using the image's URI
+        - In the repository, navigate to Images section and press the highlighted tag
+        - Copy the image's URI and head to the terminal
+        - Pull the image by following command:  
+        `docker pull <image's URI>`
+    - Using the images to run containers:  
+    `docker run -d --name <name_container> --network <name_network> -p <port number:port number> <image_URI>` 
+
+        example:  
+        `docker run -d --name my-app2 --network my-network -p 5002:5002 <image_URI>`
+- Creating images for applications of the dockerfile:  
+`docker build -t <add image_name> .`  
+
+    example:  
+    `docker build -t my-image`
+- Creating networks to link multiple containers together:
+    - Create a network with following command:  
+    `docker network <name>` 
+
+        example:  
+        `docker network my-network` 
+    - Run the containers linking to the created network:  
+    `docker run -d --name <name_container> --network <name_network> -p <port number:port number> <image_name>` 
+
+        example:  
+        `docker run -d --name my-app1 --network my-network -p 5002:5002 my-image`  
+    And run this for the other container as well.   
+    `docker run -d --name my-app2 --network my-network -e MYSQL_ROOT_PASSWORD=my-secret-pw mysql:5.7` 
+- Creating docker compose file makes it much easier, you basically run one command and Docker runs all the commands above, creating network to running the containers: 
+`docker compose up`  
