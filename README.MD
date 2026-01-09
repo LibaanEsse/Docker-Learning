@@ -16,11 +16,12 @@ This repository is intended as a foundational learning resource for anyone seeki
 #### This project teaches
 
  Connecting to MySQL database:
-    - install MySQL:   
+ - install MySQL:   
  ```bash   
 sudo apt update
 sudo apt install mysql
 ```
+- Connect to it on your application file
 ```python
 - Connect to it on your application file
 import MySQLdb
