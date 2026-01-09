@@ -122,3 +122,19 @@ Pulling:
     `docker run -d --name my-app2 --network my-network -e MYSQL_ROOT_PASSWORD=my-secret-pw mysql:5.7` 
 - Creating docker compose file makes it much easier, you basically run one command and Docker runs all the commands above, creating network to running the containers: 
 `docker compose up`  
+
+    ```docker
+    services:
+        web:
+            image: my-flask-app:multistage
+            ports:
+                - "5002:5002"
+            depends_on:
+                - mydb
+
+        mydb:
+            image: mysql:5.7
+            environment:
+                MYSQL_ROOT_PASSWORD: my-secret-pw
+
+#
