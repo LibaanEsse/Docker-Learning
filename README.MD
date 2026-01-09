@@ -23,7 +23,6 @@ sudo apt install mysql
 ```
 - Connect to it on your application file
 ```python
-- Connect to it on your application file
 import MySQLdb
 
 db = MySQLdb.connect(
