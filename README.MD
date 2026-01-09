@@ -16,7 +16,7 @@ This repository is intended as a foundational learning resource for anyone seeki
 #### This project teaches
 
  Connecting to MySQL database:
- - install MySQL:   
+ - Install MySQL:   
  ```bash   
 sudo apt update
 sudo apt install mysql
