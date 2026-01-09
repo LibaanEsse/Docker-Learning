@@ -47,7 +47,7 @@ The first stage handles building the application, while the second stage creates
     RUN pip install flask mysqlclient
 
     #Stage 2: Producion
-    FROM python:3.8-slim
+    FROM python:3.11 slim
     WORKDIR /app
     COPY --from=Build /app /app
     EXPOSE 5002
