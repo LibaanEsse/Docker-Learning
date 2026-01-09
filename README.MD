@@ -32,3 +32,24 @@ db = MySQLdb.connect(
     db="mysql"             # Name of the database to connect to
 )
 ```
+Multi-stage Dockerfile optimises container deployment by splitting the build into two stages.
+The first stage handles building the application, while the second stage creates the final image. This approach reduces the image size, as it does not include all the dependencies needed for building the application.
+```dockerfile
+ #Stage 1: Build
+    FROM python:3.8-slim as Build
+    WORKDIR /app
+    RUN apt-get update && apt-get install -y \
+        gcc \
+        python3-dev \
+        libmariadb-dev \
+        pkg-config
+    COPY . .
+    RUN pip install flask mysqlclient
+
+    #Stage 2: Producion
+    FROM python:3.8-slim
+    WORKDIR /app
+    COPY --from=Build /app /app
+    EXPOSE 5002
+    CMD ["python", "app.py"]
+```
