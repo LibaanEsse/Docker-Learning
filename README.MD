@@ -7,7 +7,7 @@ This repository is intended as a foundational learning resource for anyone seeki
 - Containerising applications
 - Redis, MySQL, NginX as services
 - Docker Compose orchestration
-- Scaling containers with load balancing
+- Scaling containers with load balancing 
 - Persistent storage & environment variables
 - Pushing & pulling images from public and private repositories (DockerHub & AWS ECR) 
 
