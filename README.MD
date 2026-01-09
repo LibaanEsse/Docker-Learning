@@ -17,14 +17,18 @@ This repository is intended as a foundational learning resource for anyone seeki
 
  Connecting to MySQL database:
     - install MySQL:   
-    `sudo apt update`  
-    `sudo apt install mysql`
-    - then connect to it in app file:
-        ```python
-        db = MySQLdb.connect(
-            host="mydb",    # Hostname of the MySQL container
-            user="root",    # Username to connect to MySQL
-            passwd="my-secret-pw",  # Password for the MySQL user
-            db="mysql"      # Name of the database to connect to
-        )
-        ```
+ ```bash   
+sudo apt update
+sudo apt install mysql
+```
+```python
+- Connect to it on your application file
+import MySQLdb
+
+db = MySQLdb.connect(
+    host="mydb",           # Hostname of the MySQL container
+    user="root",           # Username to connect to MySQL
+    passwd="my-secret-pw", # Password for the MySQL user
+    db="mysql"             # Name of the database to connect to
+)
+```
