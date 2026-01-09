@@ -53,3 +53,18 @@ The first stage handles building the application, while the second stage creates
     EXPOSE 5002
     CMD ["python", "app.py"]
 ```
+- Pushing & pulling images from DockerHub (public):
+    - Create an account on DockerHub
+    - Login to DockerHub through the terminal and enter your details:  
+    `docker login`
+    - Pushing:
+        - Create a repository in DockerHub
+        - Build and tag the image in the terminal:  
+        `docker build -t <Dockerhub username>/<repository name>:<tag> <dockerfile's directory>` 
+
+            example from project:    
+            `docker build -t libaandocker/flask-mysql:v1 .`  
+            The "." at the end says the dockerfile is in the current working directory.
+        - Push the image:  
+        `docker push libaandocker/flask-mysql:v1`  
+ <img src="images/Dockerhub.png"></img>
